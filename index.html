@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrusel footos con objetos </title>
+    <!-- <link rel="stylesheet" href="./css/carruselFoto.css"> -->
+    <style>
+        body{
+            text-align: center;
+            font-size: 20px;
+        }
+        button,span {
+            margin-left: 60px;
+            padding: 5px;
+        }
+        p {
+            margin-left: 80px;
+            padding: 5px; 
+            color: green; 
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Carrusel de flores</h1>
+
+    <p><img id="imagen" src="./img/Flowers_1.jpg" alt="" title=""></p> <!-- title donde vamos injectar el title del imagen  -->
+    
+    <button type="button" onclick="retroceder()">Retroceder</button>
+    <span id="nombreImagen">Flower 1</span>
+    <button type="button" onclick="avanzar()">Avanzar</button>
+    
+    <p id="descripcion">Esta flor es conocida por su vibrante color amarillo, simbolizando alegría y amistad.</p> <!-- para injectar la descripciones  -->
+    <!-- <script src="./js/claseImagen.js"></script>
+    <script src="./js/carruselConObjetos.js"></script> -->
+    <script>
+        const ruta = "./img/";
+        const imagenes =[
+    {
+        imagen : "Flowers_1.jpg",
+        nombre : "Flower 1",
+        title : "Flor Amarilla",
+        descripcion : "Esta flor es conocida por su vibrante color amarillo, simbolizando alegría y amistad."
+    },
+    {
+        imagen :  "Lotus.jpg",
+        nombre : "Lotus 1",
+        title : "Flor de Loto",
+        descripcion : "La flor de loto es venerada en muchas culturas por su capacidad de florecer en aguas turbias, simbolizando pureza y renacimiento."
+    },
+    {
+        imagen :  "Rose_1.jpg", 
+        nombre : "Rose 1",
+        title : "Rosa Azul",
+        descripcion : "Una rara rosa azul, simbolizando misterio y lo imposible. Ideal para expresar sentimientos únicos."
+    },
+    {
+        imagen : "Rose_2.jpg", 
+        nombre : "Rose 2",
+        title : "Rosa Colorida",
+        descripcion : "Una rosa colorida y vibrante, representando diversidad, alegría y celebración. Perfecta para cualquier ocasión festiva."
+    },
+    {
+        imagen :   "Rose_3.jpg", 
+        nombre : "Rose 3",
+        title : "Rosas Amarillas",
+        descripcion : "Estas rosas amarillas simboliza alegría, amistad y nuevos comienzos. Ideal para alegrar el día de alguien."
+    },
+ ];
+
+ let posicion = 0;
+
+function avanzar(){
+    posicion++;
+    if (posicion >= imagenes.length){
+        // alert ("es la ultima foto");
+        posicion = 0
+    }
+    mostrarImagen()
+}
+
+function  mostrarImagen(){
+    let imagen = ruta + imagenes[posicion].imagen;
+    document.getElementById("imagen").src = imagen;
+    document.getElementById("imagen").title = imagenes[posicion].title;
+    document.getElementById("nombreImagen").innerHTML = imagenes[posicion].nombre;
+    document.getElementById("descripcion").innerHTML = imagenes[posicion].descripcion;
+}
+
+function retroceder(){
+    posicion--;
+    if (posicion < 0){
+        posicion = imagenes.length - 1
+    }
+    mostrarImagen()
+
+}
+    </script>
+</body>
+</html>
